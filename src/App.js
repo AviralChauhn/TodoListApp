@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import MainSection from './MainSection';
 import './App.css';
-
-function App() {
+import SideNav from './SideNav';
+import pic from './computerpng.png'
+export default function App() {
+  const [active, setActive] = useState("INBOX")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div id='main'>
+      <h1 className='header'>Add TODO</h1>
+        <img src={pic} className='pic'/>
+      <header>
+        <div className="row">
+          <div className="col-md-2">
+            <SideNav change={setActive} />
+          </div>
+          <div className="col-md-10">
+            <MainSection active={active} />
+          </div>
+        </div>
       </header>
     </div>
   );
 }
-
-export default App;
